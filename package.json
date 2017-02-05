@@ -1,10 +1,9 @@
 {
   "name": "identifiable",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Generate unique ids for things and look them up on hashes",
   "main": "identifiable.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/erikpukinskis/identifiable.git"
