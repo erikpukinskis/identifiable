@@ -1,4 +1,4 @@
-var library = require("module-library")(rquire)
+var library = require("module-library")(require)
 
 module.exports = library.export(
   "identifiable",
