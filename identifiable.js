@@ -14,7 +14,7 @@ module.exports = library.export(
 
     function get(collection, description, ref) {
       if (!ref) {
-        throw new Error("No ref!")
+        throw new Error("Tried to find a "+description+" but you didn't provide an id.")
       }
 
       if (typeof ref == "string") {
@@ -32,8 +32,9 @@ module.exports = library.export(
 
     return {
       assignId: assignId,
-      getFrom: function(collection) {
-        return get.bind(null, collection, "bond")
+      getFrom: function(collection, options) {
+        var description = options && options.description || "item"
+        return get.bind(null, collection, description)
       }
     }
 
