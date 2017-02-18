@@ -33,7 +33,12 @@ module.exports = library.export(
     return {
       assignId: assignId,
       getFrom: function(collection, options) {
-        var description = options && options.description || "item"
+        if (typeof options == "string") {
+          var description = options
+        } else {
+          var description = options && options.description || "item"
+        }
+        
         return get.bind(null, collection, description)
       }
     }
