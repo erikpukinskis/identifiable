@@ -12,6 +12,8 @@ var people = {}
 
 identifiable.assignId(people, erik)
 
+people[erik.id] = erik // NOTICE it doesn't add the object to the collection for you! That is not our concern.
+
 var zombieErik = identifiable.getFrom(people, erik.id)
 ```
 
