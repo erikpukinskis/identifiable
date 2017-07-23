@@ -10,11 +10,13 @@ var erik = {
 
 var people = {}
 
-identifiable.assignId(people, erik)
+var id = identifiable.assignId(people, erik)
 
-people[erik.id] = erik // NOTICE it doesn't add the object to the collection for you! That is not our concern.
+people[id] = erik
 
-var zombieErik = identifiable.getFrom(people, erik.id)
+var zombieErik = identifiable.getFrom(people, id)
+
+expect(zombieErik).to.equal(erik)
 ```
 
 It does almost nothing. It generates unique IDs. It gives you errors when things go wrong.

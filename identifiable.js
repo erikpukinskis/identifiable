@@ -9,7 +9,7 @@ module.exports = library.export(
         var id = Math.random().toString(36).split(".")[1].substr(0,4)
       } while (collection[id])
 
-      item.id = id
+      return id
     }
 
     function get(collection, description, ref) {
