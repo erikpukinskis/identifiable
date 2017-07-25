@@ -9,12 +9,13 @@ var erik = {
 }
 
 var people = {}
+var get = identifiable.getFrom(people, {description: "person"})
 
 var id = identifiable.assignId(people, erik)
 
 people[id] = erik
 
-var zombieErik = identifiable.getFrom(people, id)
+var zombieErik = get(id)
 
 expect(zombieErik).to.equal(erik)
 ```
