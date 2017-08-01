@@ -12,8 +12,8 @@ module.exports = library.export(
       return id
     }
 
-    function get(collection, description, ref) {
-      if (!ref) {
+    function get(collection, description, ref, allowUndefined) {
+      if (!ref && allowUndefined) {
         throw new Error("Tried to find a "+description+" but you didn't provide an id.")
       }
 
@@ -23,11 +23,15 @@ module.exports = library.export(
         var item = ref
       }
 
-      if (!item) {
-        throw new Error("No "+description+" with id "+ref+" in collection")
-      }
+      if (!item && allowUndefined) {
+        return undefined
 
-      return item
+      } else if (!item) {
+        throw new Error("No "+description+" with id "+ref+" in collection")
+
+      } else {
+        return item
+      }
     }
 
     return {
