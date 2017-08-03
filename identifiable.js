@@ -4,9 +4,10 @@ module.exports = library.export(
   "identifiable",
   function() {
 
-    function assignId(collection, item) {
-      if (item) {
-        throw new Error("identifiable.assignId doesn't set an id, it doesn't take an id, it just takes the collection and returns an id")
+    function assignId(collection, id) {
+      if (id) {
+        demandId(collection, id)
+        return id
       }
 
       do {
@@ -48,9 +49,9 @@ module.exports = library.export(
       }
     }
 
-    function getFrom(collection, options) {
-      if (typeof options != "string") {
-        throw new Error("getFrom expects a collection and a string describing what's coming out of the collection")
+    function getFrom(collection, description) {
+      if (typeof description != "string") {
+        throw new Error("2nd argument to identifiable.getFrom should be a string describing what's coming out of the collection. You passed "+JSON.stringify(description))
       }
         
       return get.bind(null, collection, description)
