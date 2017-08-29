@@ -11,8 +11,23 @@ module.exports = library.export(
       }
 
       do {
-        var id = Math.random().toString(36).split(".")[1].substr(0,4)
+        var id = rand()
       } while (collection[id])
+
+      return id
+    }
+
+    function rand() {
+      return Math.random().toString(36).split(".")[1].substr(0,4)
+    }
+
+    function assignLike(collection, id) {
+      var base = id
+      var suffix = 2
+      while(collection[id]) {
+        id = base+"-"+suffix
+        suffix++
+      }
 
       return id
     }
@@ -60,6 +75,7 @@ module.exports = library.export(
     return {
       assignId: assignId,
       demandId: demandId,
+      assignLike: assignLike,
       getFrom: getFrom,
     }
   }
