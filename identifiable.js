@@ -72,11 +72,31 @@ module.exports = library.export(
       return get.bind(null, collection, description)
     }
 
+    function mapList(id, lists, callback) {
+      if (!lists[id]) {
+        return []
+      }
+
+      return lists[id].map(callback)
+    }
+
+    function addToList(id, lists, newItem) {
+      var list = lists[id]
+      if (!list) {
+        list = lists[id] = []
+      }
+      list.push(newItem)
+    }
+    
     return {
       assignId: assignId,
       demandId: demandId,
       assignLike: assignLike,
       getFrom: getFrom,
+      list: {
+        add: addToList,
+        map: mapList,
+      },
     }
   }
 )
