@@ -2,6 +2,7 @@ If you don't need a query engine or persistence, **identifiable** can help you s
 
 ```javascript
 var identifiable = require("identifiable")
+var expect = require("chai").expect
 
 var erik = {
   name: "Erik",
@@ -9,18 +10,17 @@ var erik = {
 }
 
 var people = {}
-var get = identifiable.getFrom(people, {description: "person"})
+
+var get = identifiable.getFrom(people, "person")
 
 var id = identifiable.assignId(people)
-
 people[id] = erik
+var result = get(id)
 
-var zombieErik = get(id)
-
-expect(zombieErik).to.equal(erik)
+expect(result).to.equal(erik)
 ```
 
-It does almost nothing. It generates unique IDs. It gives you errors when things go wrong.
+It does almost nothing. It generates unique IDs. It throws an error when it can't find an item with that id.
 
 If you are OK with getters returning undefined:
 
