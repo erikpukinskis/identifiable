@@ -5,7 +5,7 @@ module.exports = library.export(
   function() {
 
     function assignId(collection, id) {
-      if (id) {
+      if (id != null) {
         demandId(collection, id)
         return id
       }
