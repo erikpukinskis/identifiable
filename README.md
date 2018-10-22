@@ -22,11 +22,26 @@ expect(result).to.equal(erik)
 
 It does almost nothing. It generates unique IDs. It throws an error when it can't find an item with that id.
 
-If you are OK with getters returning undefined:
+### Allowing getters to return undefined
+
+If you pass `true` to a getter, it will just return undefined if the record isn't found. Otherwise an error gets thrown.
 
 ```javascript
 var maybeErik = get(id, true)
 ```
+
+### Providing a pre-existing ID
+
+Sometimes, if you're maybe reseeding a store of items that already have IDs assigned and being used in the wild, you want to make sure you can keep using those same ids.
+
+This works just fine, assignId will take an id:
+
+```javascript
+var id = identifiable.assignId(people, "gfa0")
+```
+
+This will throw an error if the ID is already in use, but otherwise it will use the provided ID. If you pass something `null`-like, it will assign a new, unused ID.
+
 
 ### Why
 
