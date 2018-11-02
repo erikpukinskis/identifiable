@@ -4,21 +4,27 @@ module.exports = library.export(
   "identifiable",
   function() {
 
-    function assignId(collection, id) {
+    function assignId(collection, id, prefix) {
       if (id != null) {
         demandId(collection, id)
         return id
       }
 
       do {
-        var id = rand()
+        var id = rand(prefix)
       } while (collection[id])
 
       return id
     }
 
-    function rand() {
-      return Math.random().toString(36).split(".")[1].substr(0,4)
+    function rand(prefix) {
+      var code = Math.random().toString(36).split(".")[1].substr(0,4)
+
+      if (prefix) {
+        return prefix+"-"+code
+      } else {
+        return code
+      }
     }
 
     function assignLike(collection, id) {

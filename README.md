@@ -43,6 +43,15 @@ var id = identifiable.assignId(people, "gfa0")
 This will throw an error if the ID is already in use, but otherwise it will use the provided ID. If you pass something `null`-like, it will assign a new, unused ID.
 
 
+### Giving IDs a prefix
+
+It can be nice to be able to tell different IDs for different purposes apart at a glance. The third parameter to assignId can be a prefix:
+
+```javascript
+var id = identifiable.assignId(people, null, "ppl")
+// id is ppl-fjst
+```
+
 ### Why
 
 A database is overkill if you just need a hash of items. Not everything needs a persistence AI backing it up.
