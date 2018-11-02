@@ -17,6 +17,12 @@ module.exports = library.export(
       return id
     }
 
+    function valid(prefix, id) {
+      if (id.substr(0, prefix.length) != prefix) {
+        throw new Error("Whatever "+id+" represents, it is supposed to have a -"+prefix+" prefix!")
+      }
+    }
+
     function rand(prefix) {
       var code = Math.random().toString(36).split(".")[1].substr(0,4)
 
@@ -97,6 +103,7 @@ module.exports = library.export(
     return {
       assignId: assignId,
       demandId: demandId,
+      valid: valid,
       assignLike: assignLike,
       getFrom: getFrom,
       list: {
