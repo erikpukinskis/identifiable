@@ -18,7 +18,9 @@ module.exports = library.export(
     }
 
     function valid(prefix, id) {
-      if (id.substr(0, prefix.length) != prefix) {
+      if (typeof id != "string") {
+        throw new Error("You have to pass a string id to identifiable.valid. You passed "+id)
+      } else if (id.substr(0, prefix.length) != prefix) {
         throw new Error("Whatever "+id+" represents, it is supposed to have a -"+prefix+" prefix!")
       }
     }
