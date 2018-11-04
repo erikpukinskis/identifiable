@@ -52,6 +52,16 @@ var id = identifiable.assignId(people, null, "ppl")
 // id is ppl-fjst
 ```
 
+### "Type" checking
+
+You can throw an error if a given ID doesn't have the right prefix, allowing a crude sort of type checking:
+
+```javascript
+var id = identifiable.assignId(doges, null, "doge")
+...
+identifiable.valid("ppl", id) // throws an error
+```
+
 ### Why
 
 A database is overkill if you just need a hash of items. Not everything needs a persistence AI backing it up.
